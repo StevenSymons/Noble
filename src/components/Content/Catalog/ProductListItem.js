@@ -1,12 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { HeartButton } from "./HeartButton";
+import { connect } from "react-redux";
+import { add } from "../../../actions/wishListActions";
 
 const ProductListWrapper = styled.div`
   position: relative;
   cursor: pointer;
 
-  &:hover > div > div {
+  &:hover > a > div > div {
     visibility: visible;
     height: 50px;
     max-height: 50px;
@@ -46,21 +49,44 @@ const ExtraInfo = styled.div`
   bottom: 0;
 `;
 
-export const ProductListItem = ({ brand, price, desc, link }) => (
-  <ProductListWrapper>
-    <ImageWrapper>
-      <Image src={link} />
-      <ExtraInfo>
-        <span>In stock</span>
-      </ExtraInfo>
-    </ImageWrapper>
-    <TextWrapper>
-      <span>
-        <strong>{brand}</strong>
-      </span>
-      <span>{price + " €"}</span>
-    </TextWrapper>
-    <Description>{desc}</Description>
-    <HeartButton />
-  </ProductListWrapper>
-);
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #292929;
+`;
+
+const ProductListItem = ({
+  id,
+  brand,
+  price,
+  desc,
+  link,
+  path,
+  dispatch,
+  icon,
+  addOrRemove
+}) => {
+  const item = { id, brand, price, desc, link, path };
+
+  return (
+    <ProductListWrapper>
+      <StyledLink to={path + "/" + id}>
+        <ImageWrapper>
+          <Image src={link} />
+          <ExtraInfo>
+            <span>In stock</span>
+          </ExtraInfo>
+        </ImageWrapper>
+        <TextWrapper>
+          <span>
+            <strong>{brand}</strong>
+          </span>
+          <span>{price + " €"}</span>
+        </TextWrapper>
+        <Description>{desc}</Description>
+      </StyledLink>
+      <HeartButton addOrRemove={() => addOrRemove(item)} icon={icon} />
+    </ProductListWrapper>
+  );
+};
+
+export default connect()(ProductListItem);

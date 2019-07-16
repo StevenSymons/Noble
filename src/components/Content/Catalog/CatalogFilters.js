@@ -24,7 +24,7 @@ const FiltersWrapper = styled.div`
   width: 110px;
 `;
 
-const Filter = styled.div`
+export const Filter = styled.div`
   display: flex;
   justify-content: space-around;
   font-size: 1.8rem;

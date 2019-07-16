@@ -1,7 +1,11 @@
 import React from "react";
-import { ProductListItem } from "./ProductListItem";
+import { withRouter } from "react-router-dom";
+import ProductListItem from "./ProductListItem";
 import styled from "styled-components";
-import { data } from "./data";
+import { data } from "../../../shared/data";
+import heartIcon from "../../../assets/icons/heart.svg";
+import { connect } from "react-redux";
+import { add } from "../../../actions/wishListActions";
 
 const ProductListWrapper = styled.div`
   display: grid;
@@ -11,10 +15,27 @@ const ProductListWrapper = styled.div`
   width: 100%;
 `;
 
-export const ProductList = () => (
-  <ProductListWrapper>
-    {data.map(({ brand, price, desc, link }) => (
-      <ProductListItem brand={brand} price={price} desc={desc} link={link} />
-    ))}
-  </ProductListWrapper>
-);
+const ProductList = ({ location: { pathname }, dispatch }) => {
+  const addOrRemove = item => {
+    dispatch(add(item));
+  };
+
+  return (
+    <ProductListWrapper>
+      {data.map(({ id, brand, price, desc, link }) => (
+        <ProductListItem
+          id={id}
+          brand={brand}
+          price={price}
+          desc={desc}
+          link={link}
+          path={pathname}
+          icon={heartIcon}
+          addOrRemove={addOrRemove}
+        />
+      ))}
+    </ProductListWrapper>
+  );
+};
+
+export default connect()(withRouter(ProductList));

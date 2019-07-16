@@ -1,5 +1,8 @@
+import uuidv4 from "uuid";
+
 export const data = [
   {
+    id: 1,
     brand: "Desigual",
     price: 79.95,
     desc: "Korte jurk - black",
@@ -8,6 +11,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 2,
     brand: "Selected Femme",
     price: 79.99,
     desc: "SFDAMINA 7/8 DRESS - Blousejurk",
@@ -16,6 +20,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 3,
     brand: "Selected Femme",
     price: 79.99,
     desc: "SFTUNNI SMILE - Korte jurk - black",
@@ -24,6 +29,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 4,
     brand: "Lauren Ralph Lauren",
     price: 184.95,
     desc: "LEONETTA - Galajurk - black/black",
@@ -32,6 +38,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 5,
     brand: "ONLY",
     price: 39.99,
     desc: "ONLSHIRA LACE DRESS",
@@ -40,6 +47,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 6,
     brand: "Vila",
     price: 26.99,
     desc: "VITINNY - Jerseyjurk-black ",
@@ -48,6 +56,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 7,
     brand: "Anna Field",
     price: 26.95,
     desc: "Jerseyjurk - black",
@@ -56,6 +65,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 8,
     brand: "Tiger of Sweden",
     price: 199.95,
     desc: "STRETCH - Etui-jurk - black",
@@ -64,6 +74,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 9,
     brand: "Zalando Essentials",
     price: 14.99,
     desc: "Etui-jurk - black",
@@ -72,6 +83,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 10,
     brand: "Vila",
     price: 17.95,
     desc: "VIDEANA DRESS - Maxi-jurk - black",
@@ -80,6 +92,7 @@ export const data = [
     color: "zwart"
   },
   {
+    id: 11,
     brand: "Vila",
     price: 26.99,
     desc: "VITINNY - Jerseyjurk - total eclipse",
@@ -88,6 +101,7 @@ export const data = [
     color: "blauw"
   },
   {
+    id: 12,
     brand: "Vero Moda",
     price: 16.45,
     desc: "SFDAMINA 7/8 DRESS - Blousejurk",
@@ -96,6 +110,7 @@ export const data = [
     color: "blauw"
   },
   {
+    id: 13,
     brand: "Vila",
     price: 59.99,
     desc: "VIMILINA - Galajurk - total eclipse",

@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "styled-components";
-import heartIcon from "../../../assets/icons/heart.svg";
 
 const HeartButtonWrapper = styled.div`
   display: flex;
@@ -14,14 +13,22 @@ const HeartButtonWrapper = styled.div`
   background-color: white;
   border-radius: 100px;
   cursor: pointer;
+  z-index: 100;
+
+  &:hover {
+    color: red;
+    fill: red;
+  }
 `;
 
 const Image = styled.img`
   width: 2.2rem;
 `;
 
-export const HeartButton = () => (
-  <HeartButtonWrapper>
-    <Image src={heartIcon} />
-  </HeartButtonWrapper>
-);
+export const HeartButton = ({ addOrRemove, icon }) => {
+  return (
+    <HeartButtonWrapper onClick={addOrRemove}>
+      <Image src={icon} />
+    </HeartButtonWrapper>
+  );
+};

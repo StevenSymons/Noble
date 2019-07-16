@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import accountIcon from "../../assets/icons/account.svg";
 import heartIcon from "../../assets/icons/heart.svg";
@@ -40,6 +41,11 @@ const Image = styled.img`
   padding-bottom: 0.7rem;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #292929;
+`;
+
 export const NavbarRight = () => (
   <NavbarRightWrapper>
     <NavbarMenu>
@@ -47,10 +53,12 @@ export const NavbarRight = () => (
         <Image src={accountIcon} />
         <Text>mijn account</Text>
       </NavbarMenuItem>
-      <NavbarMenuItem>
-        <Image src={heartIcon} />
-        <Text>verlanglijstje</Text>
-      </NavbarMenuItem>
+      <StyledLink to="/wish-list">
+        <NavbarMenuItem>
+          <Image src={heartIcon} />
+          <Text>verlanglijstje</Text>
+        </NavbarMenuItem>
+      </StyledLink>
       <NavbarMenuItem>
         <Image src={shoppingCartIcon} />
         <Text>winkelwagen</Text>

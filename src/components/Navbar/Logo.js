@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const LogoTitle = styled.h1`
@@ -7,4 +8,13 @@ const LogoTitle = styled.h1`
   line-height: 4.2rem;
 `;
 
-export const Logo = () => <LogoTitle>Noble</LogoTitle>;
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: #292929;
+`;
+
+export const Logo = () => (
+  <LogoTitle>
+    <StyledLink to="/">Noble</StyledLink>
+  </LogoTitle>
+);
