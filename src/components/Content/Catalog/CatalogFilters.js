@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import arrowIcon from "../../../assets/icons/arrow.svg";
+import { connect } from "react-redux";
+import { addExtraFilter } from "../../../actions/filterActions";
 
 const filters = [
   {
@@ -49,7 +51,7 @@ const FilterList = styled.ul`
   position: absolute;
   max-height: ${props => (props.open ? "auto" : "0%")};
   background-color: white;
-  z-index: 10;
+  z-index: 150;
   width: 100%;
   overflow: hidden;
 `;
@@ -57,6 +59,11 @@ const FilterList = styled.ul`
 const FilterListItem = styled.li`
   margin: 1rem 0;
   font-weight: 300;
+  cursor: pointer;
+
+  &:hover {
+    font-weight: 500;
+  }
 `;
 
 const Image = styled.img`
@@ -64,7 +71,7 @@ const Image = styled.img`
   transform: rotate(90deg);
 `;
 
-export const CatalogFilters = () => {
+const CatalogFilters = ({ dispatch }) => {
   const [filterList, setFilterList] = useState([]);
 
   const showFilterList = category => {
@@ -75,6 +82,10 @@ export const CatalogFilters = () => {
       return setFilterList(filteredList);
     }
     setFilterList(() => [...filterList, category]);
+  };
+
+  const addFilter = filter => {
+    dispatch(addExtraFilter(filter.toLowerCase()));
   };
 
   return (
@@ -89,7 +100,11 @@ export const CatalogFilters = () => {
           </Filter>
           <FilterList open={filterList.includes(category)}>
             {filters.map(filter => {
-              return <FilterListItem>{filter}</FilterListItem>;
+              return (
+                <FilterListItem onClick={() => addFilter(filter)}>
+                  {filter}
+                </FilterListItem>
+              );
             })}
           </FilterList>
         </div>
@@ -97,3 +112,5 @@ export const CatalogFilters = () => {
     </FiltersWrapper>
   );
 };
+
+export default connect()(CatalogFilters);

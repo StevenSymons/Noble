@@ -1,5 +1,5 @@
-const ADD = "ADD";
-const REMOVE = "REMOVE";
+const ADD = "ADD_TO_WISHLIST";
+const REMOVE = "REMOVE_FROM_WISHLIST";
 
 export const add = product => {
   console.log(ADD);

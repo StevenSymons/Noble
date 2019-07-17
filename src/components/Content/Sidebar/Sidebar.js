@@ -1,7 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import arrowIcon from "../../../assets/icons/arrow.svg";
 import { elements } from "./data";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { addBaseFilter } from "../../../actions/filterActions";
 
 const SidebarWrapper = styled.div`
   width: 200px;
@@ -51,8 +54,19 @@ const SidebarSubListItem = styled.li`
   margin: 1rem 0;
 `;
 
-export const Sidebar = () => {
+const Sidebar = props => {
   const [showSubList, setShowSubList] = useState([]);
+  const [filteredElements, setFilteredElements] = useState([]);
+
+  useEffect(() => {
+    if (props.match.path.slice(1) === "dames") {
+      return setFilteredElements(elements[0]);
+    } else if (props.match.path.slice(1) === "heren") {
+      return setFilteredElements(elements[1]);
+    } else {
+      return setFilteredElements(elements[2]);
+    }
+  });
 
   const showMenu = category => {
     if (showSubList.includes(category)) {
@@ -64,10 +78,14 @@ export const Sidebar = () => {
     setShowSubList(() => [...showSubList, category]);
   };
 
+  const handleAddFilter = filter => {
+    props.dispatch(addBaseFilter(filter.toLowerCase()));
+  };
+
   return (
     <SidebarWrapper>
       <SidebarList>
-        {elements.map(({ category, subcategories }) => (
+        {filteredElements.map(({ category, subcategories }) => (
           <div>
             <SidebarListItem
               onClick={() => showMenu(category)}
@@ -81,7 +99,11 @@ export const Sidebar = () => {
 
             <SidebarSubList open={showSubList.includes(category)}>
               {subcategories.map(subcategory => (
-                <SidebarSubListItem>{subcategory}</SidebarSubListItem>
+                <SidebarSubListItem
+                  onClick={() => handleAddFilter(subcategory)}
+                >
+                  {subcategory}
+                </SidebarSubListItem>
               ))}
             </SidebarSubList>
           </div>
@@ -90,3 +112,5 @@ export const Sidebar = () => {
     </SidebarWrapper>
   );
 };
+
+export default connect()(withRouter(Sidebar));

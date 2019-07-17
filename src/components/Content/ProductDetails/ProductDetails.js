@@ -5,6 +5,7 @@ import { Filter } from "../Catalog/CatalogFilters";
 import heartIcon from "../../../assets/icons/heart.svg";
 import { connect } from "react-redux";
 import { add } from "../../../actions/wishListActions";
+import { addToCart } from "../../../actions/shoppingCartActions";
 
 const ProductDetailsWrapper = styled.div`
   display: flex;
@@ -63,9 +64,9 @@ const LikeButton = styled.button`
   outline: none;
 `;
 
-const CTA = styled.button`
+export const CTA = styled.button`
   display: block;
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: white;
   border: none;
   margin: 1rem 0;
@@ -94,25 +95,29 @@ const Image = styled.img`
   padding-right: 1rem;
 `;
 
-const ProductDetails = ({ match: { params }, dispatch }) => {
+const ProductDetails = ({ match: { params }, dispatch, location }) => {
   const [product, setProduct] = useState({});
 
   useEffect(() => {
-    const productData = data.filter(product => {
+    const productData = data[location.state.index].filter(product => {
       return product.id === parseInt(params.id);
     });
     setProduct(productData);
   }, []);
 
   const addToWishList = product => {
-    console.log("function works");
     dispatch(add(product));
+  };
+
+  const addToShoppingCart = product => {
+    product.count = 1;
+    dispatch(addToCart(product));
   };
 
   return (
     <ProductDetailsWrapper>
       <div>
-        <PicWrapper src="https://mosaic03.ztat.net/vgs/media/article-image-mhq/5S/A8/1A/02/1Q/11/5SA81A021-Q11@7.jpg?imwidth=1800" />
+        <PicWrapper src={product[0] && product[0].link} />
       </div>
       <ProductInfo>
         <h4>{product[0] && product[0].brand}</h4>
@@ -126,7 +131,7 @@ const ProductDetails = ({ match: { params }, dispatch }) => {
           </span>
           plaats op verlanglijstje
         </LikeButton>
-        <CTA>bestel nu!</CTA>
+        <CTA onClick={() => addToShoppingCart(product[0])}>bestel nu!</CTA>
         <Delivery>
           <Standard>
             <strong>Standaard levering</strong> gratis 2-5 werkdagen

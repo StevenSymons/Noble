@@ -1,6 +1,6 @@
 import React from "react";
-import { CatalogTitle } from "./CatalogTitle";
-import { CatalogFilters } from "./CatalogFilters";
+import CatalogTitle from "./CatalogTitle";
+import CatalogFilters from "./CatalogFilters";
 import ProductList from "./ProductList";
 import styled from "styled-components";
 

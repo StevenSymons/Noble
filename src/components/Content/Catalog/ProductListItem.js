@@ -63,13 +63,20 @@ const ProductListItem = ({
   path,
   dispatch,
   icon,
-  addOrRemove
+  addOrRemove,
+  index
 }) => {
   const item = { id, brand, price, desc, link, path };
+  const newTo = {
+    pathname: path + "/" + id,
+    state: {
+      index
+    }
+  };
 
   return (
     <ProductListWrapper>
-      <StyledLink to={path + "/" + id}>
+      <StyledLink to={newTo}>
         <ImageWrapper>
           <Image src={link} />
           <ExtraInfo>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Sidebar } from "./Sidebar/Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import { Catalog } from "./Catalog/Catalog";
 import styled from "styled-components";
 

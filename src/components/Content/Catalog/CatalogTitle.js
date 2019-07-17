@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 const Title = styled.h2`
   font-size: 3.6rem;
@@ -8,4 +9,16 @@ const Title = styled.h2`
   margin-bottom: 4rem;
 `;
 
-export const CatalogTitle = () => <Title>Kleding Dames</Title>;
+const CatalogTitle = ({ location: { pathname } }) => {
+  return (
+    <Title>
+      Kleding{" "}
+      {pathname
+        .slice(1)
+        .charAt(0)
+        .toUpperCase() + pathname.slice(2)}
+    </Title>
+  );
+};
+
+export default withRouter(CatalogTitle);

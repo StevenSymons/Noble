@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const NavbarLeftWrapper = styled.div`
   display: flex;
@@ -9,29 +10,31 @@ const NavbarLeftWrapper = styled.div`
   transform: translateY(-30%);
 `;
 
-const Button = styled.button`
+const StyledNavLink = styled(NavLink)`
   display: inline-block;
-  border: none;
   border-bottom: 2px solid transparent;
-  background-color: transparent;
   text-transform: uppercase;
-  cursor: pointer;
-  outline: none;
+  color: #292929;
+  text-decoration: none;
   font-size: 1.8rem;
-  font-weight: 100;
+  font-weight: 300;
   padding: 0;
   padding-bottom: 3px;
   margin-right: 20%;
+  transition: border-bottom 0.2s linear;
 
   &:hover {
+    border-bottom: 2px solid #292929;
+  }
+  &.active {
     border-bottom: 2px solid #292929;
   }
 `;
 
 export const NavbarLeft = () => (
   <NavbarLeftWrapper>
-    <Button>dames</Button>
-    <Button>heren</Button>
-    <Button>kinderen</Button>
+    <StyledNavLink to="/dames">dames</StyledNavLink>
+    <StyledNavLink to="/heren">heren</StyledNavLink>
+    <StyledNavLink to="/kinderen">kinderen</StyledNavLink>
   </NavbarLeftWrapper>
 );

@@ -34,6 +34,7 @@ const Text = styled.span`
   justify-content: center;
   width: 70px;
   font-size: 1rem;
+  transition: font-weight 0.2s linear;
 `;
 
 const Image = styled.img`
@@ -59,10 +60,12 @@ export const NavbarRight = () => (
           <Text>verlanglijstje</Text>
         </NavbarMenuItem>
       </StyledLink>
-      <NavbarMenuItem>
-        <Image src={shoppingCartIcon} />
-        <Text>winkelwagen</Text>
-      </NavbarMenuItem>
+      <StyledLink to="/shopping-cart">
+        <NavbarMenuItem>
+          <Image src={shoppingCartIcon} />
+          <Text>winkelwagen</Text>
+        </NavbarMenuItem>
+      </StyledLink>
     </NavbarMenu>
   </NavbarRightWrapper>
 );

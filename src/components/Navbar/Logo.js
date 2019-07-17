@@ -10,7 +10,9 @@ const LogoTitle = styled.h1`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
-  color: #292929;
+  color: white;
+  background-color: #292929;
+  padding: 0 2rem;
 `;
 
 export const Logo = () => (
