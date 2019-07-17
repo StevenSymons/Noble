@@ -6,6 +6,8 @@ import ProductDetails from "./Content/ProductDetails/ProductDetails";
 import WishList from "./Content/WishList/WishList";
 import ShoppingCart from "./Content/ShoppingCart/ShoppingCart";
 import styled from "styled-components";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import {
   BrowserRouter as Router,
   Route,

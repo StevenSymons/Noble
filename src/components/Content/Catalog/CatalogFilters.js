@@ -3,6 +3,7 @@ import styled from "styled-components";
 import arrowIcon from "../../../assets/icons/arrow.svg";
 import { connect } from "react-redux";
 import { addExtraFilter } from "../../../actions/filterActions";
+import { removeIcon } from "../../../assets/icons/remove.svg";
 
 const filters = [
   {
@@ -73,6 +74,7 @@ const Image = styled.img`
 
 const CatalogFilters = ({ dispatch }) => {
   const [filterList, setFilterList] = useState([]);
+  const [isFilterSet, setIsFilterSet] = useState(false);
 
   const showFilterList = category => {
     if (filterList.includes(category)) {
@@ -85,6 +87,7 @@ const CatalogFilters = ({ dispatch }) => {
   };
 
   const addFilter = filter => {
+    setIsFilterSet(true);
     dispatch(addExtraFilter(filter.toLowerCase()));
   };
 

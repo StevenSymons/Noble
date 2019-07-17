@@ -6,6 +6,8 @@ import heartIcon from "../../../assets/icons/heart.svg";
 import { connect } from "react-redux";
 import { add } from "../../../actions/wishListActions";
 import { addToCart } from "../../../actions/shoppingCartActions";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ProductDetailsWrapper = styled.div`
   display: flex;
